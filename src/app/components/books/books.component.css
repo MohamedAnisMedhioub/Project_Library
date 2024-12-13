@@ -1,0 +1,198 @@
+/* Style général pour le conteneur */
+.container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centrer le contenu */
+    padding: 20px;
+}
+
+/* Style de la navbar */
+.navbar {
+    background-color: #f8f9fa; /* Fond clair */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #495057;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: gray;
+}
+
+.navbar .btn {
+    border-radius: 5px; /* Coins arrondis pour les boutons */
+    font-weight: bold;
+}
+
+.navbar .btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.navbar .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.navbar .form-control {
+    border-radius: 5px;
+}
+
+.navbar .btn-outline-info {
+    border-color: #17a2b8;
+    color: #17a2b8;
+}
+
+.navbar .btn-outline-info:hover {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* Style de la section de contenu du tableau */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.table th {
+    background-color: #f1f1f1;
+    color: #495057;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table td {
+    padding: 12px 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Assurer que les deux colonnes aient la même largeur */
+.table th, .table td {
+    width: 50%; /* Chaque colonne occupe 50% de la largeur */
+}
+
+.table .btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.table .btn:hover {
+    transform: scale(1.05);
+}
+
+.table .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+.table .btn-info:hover {
+    background-color: #138496;
+}
+
+.table .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.table .btn-success:hover {
+    background-color: #218838;
+}
+
+.table .btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.table .btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+.table .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.table .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Style du modal */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-body {
+    font-size: 16px;
+}
+
+.modal-footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Image du livre dans le modal */
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Styles pour les alertes (loading, error) */
+.alert {
+    margin-top: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Style pour le champ de recherche */
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-inline .form-control {
+    margin-right: 10px;
+}
+

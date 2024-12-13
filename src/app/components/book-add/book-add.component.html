@@ -1,0 +1,70 @@
+<div class="container" *ngIf="bookFormGroup">
+    <form [formGroup]="bookFormGroup" (ngSubmit)="onSaveBook()">
+        <!-- Titre -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title" 
+            [ngClass]="{'is-invalid':submitted && bookFormGroup.controls['title'].errors}" />
+            <div *ngIf="submitted && bookFormGroup.controls['title'].errors" class="invalid-feedback">
+                <div *ngIf="bookFormGroup.controls['title'].errors['required']">Le titre est obligatoire.</div>
+            </div>
+        </div>
+
+        <!-- Auteur -->
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" class="form-control" formControlName="author" 
+            [ngClass]="{'is-invalid':submitted && bookFormGroup.controls['author'].errors}" />
+            <div *ngIf="submitted && bookFormGroup.controls['author'].errors" class="invalid-feedback">
+                <div *ngIf="bookFormGroup.controls['author'].errors['required']">L'auteur est obligatoire.</div>
+            </div>
+        </div>
+
+        <!-- Année -->
+        <div class="form-group">
+            <label for="year">Year</label>
+            <input type="datetime" id="year" placeholder="2024" class="form-control" formControlName="year" 
+            [ngClass]="{'is-invalid':submitted && bookFormGroup.controls['year'].errors}" />
+            <div *ngIf="submitted && bookFormGroup.controls['year'].errors" class="invalid-feedback">
+                <div *ngIf="bookFormGroup.controls['year'].errors['required']">L'année est obligatoire.</div>
+            </div>
+        </div>
+
+        <!-- Genre -->
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" class="form-control" formControlName="genre" 
+            [ngClass]="{'is-invalid':submitted && bookFormGroup.controls['genre'].errors}" />
+            <div *ngIf="submitted && bookFormGroup.controls['genre'].errors" class="invalid-feedback">
+                <div *ngIf="bookFormGroup.controls['genre'].errors['required']">Le genre est obligatoire.</div>
+            </div>
+        </div>
+
+        <!-- Nombre de copies -->
+        <div class="form-group">
+            <label for="copies">Number of copies</label>
+            <input type="number" id="copies" placeholder="0" class="form-control" formControlName="copies" 
+            [ngClass]="{'is-invalid':submitted && bookFormGroup.controls['copies'].errors}" />
+            <div *ngIf="submitted && bookFormGroup.controls['copies'].errors" class="invalid-feedback">
+                <div *ngIf="bookFormGroup.controls['copies'].errors['required']">Le nombre de copies est obligatoire.</div>
+                <div *ngIf="bookFormGroup.controls['copies'].errors['min']">Il doit y avoir au moins 1 copie.</div>
+            </div>
+        </div>
+
+        <!-- Image -->
+        <div class="form-group">
+            <label for="image">Image (URL)</label>
+            <input type="url" id="image" class="form-control" formControlName="image" 
+            [ngClass]="{'is-invalid':submitted && bookFormGroup.controls['image'].errors}" 
+            (input)="previewImage()" />
+            <div *ngIf="submitted && bookFormGroup.controls['image'].errors" class="invalid-feedback">
+                <div *ngIf="bookFormGroup.controls['image'].errors['required']">L'image est obligatoire.</div>
+                <div *ngIf="bookFormGroup.controls['image'].errors['pattern']">URL invalide.</div>
+            </div>
+            <img *ngIf="imagePreview" [src]="imagePreview" alt="Prévisualisation" class="img-thumbnail mt-2" />
+        </div>
+
+        <!-- Bouton Sauvegarder -->
+        <button type="submit" class="btn btn-success mt-3">Submit</button>
+    </form>
+</div>

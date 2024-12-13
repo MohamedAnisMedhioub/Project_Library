@@ -1,0 +1,91 @@
+<div class="container mt-4">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-between mb-3">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <button (click)="onGetAllBooks()" class="btn btn-outline-secondary mx-2">All Books</button>
+            </li>
+            <li class="nav-item">
+                <button (click)="onGetSelectedBooks()" class="btn btn-outline-secondary mx-2">Selected Books</button>
+            </li>
+            <li class="nav-item">
+                <button (click)="onGetAvailableBooks()" class="btn btn-outline-secondary mx-2">Available Books</button>
+            </li>
+            <li class="nav-item">
+                <button (click)="onNewBook()" class="btn btn-outline-secondary mx-2">New Book</button>
+            </li>
+        </ul>
+        <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="form-inline ml-auto">
+            <input [(ngModel)]="keyword" name="keyword" type="text" class="form-control form-control-sm" placeholder="Search book" required minlength="1">
+            <button type="submit" [disabled]="!f.valid">
+              <span class="fa fa-search"></span>
+            </button>
+        </form>
+    </nav>
+
+    <div *ngIf="books$ | async as appState">
+        <!-- Loading State -->
+        <div *ngIf="appState.dataState === DataStateEnum.LOADING" class="text-center my-3">
+            <span class="spinner-border text-info"></span> Loading...
+        </div>
+
+        <!-- Error State -->
+        <div *ngIf="appState.dataState === DataStateEnum.ERROR" class="alert alert-danger text-center my-3">
+            Error: {{ appState.errorMessage }}
+        </div>
+
+        <!-- Loaded State -->
+        <div *ngIf="appState.dataState === DataStateEnum.LOADED">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Title</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of appState.data">
+                        <td>{{ book.title }}</td>
+                        <td>
+                            <button (click)="openModal(book)" class="btn btn-info btn-sm mx-2">View Details</button>
+                            <button (click)="onSelect(book)"
+                                    [ngClass]="{'btn-success': book.selected, 'btn-outline-success': !book.selected}"
+                                    class="btn btn-sm mx-1">
+                                {{ book.selected ? 'Unselect' : 'Select' }}
+                            </button>
+                            <button (click)="onEdit(book)" class="btn btn-primary btn-sm mx-2">Edit</button>
+                            <button (click)="onDelete(book)" class="btn btn-danger btn-sm mx-2">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookModalLabel">Book Details</h5>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="selectedBook">
+                    <!-- Image of the book -->
+                    <p><strong>Title:</strong> {{ selectedBook.title }}</p>
+                    <p><strong>Author:</strong> {{ selectedBook.author }}</p>
+                    <p><strong>Year:</strong> {{ selectedBook.year }}</p>
+                    <p><strong>Genre:</strong> {{ selectedBook.genre }}</p>
+                    <p><strong>Copies:</strong> {{ selectedBook.copies }}</p>
+                    <p><strong>Selected:</strong> {{ selectedBook.selected ? 'Yes' : 'No' }}</p>
+                    <p><strong>Available:</strong> {{ selectedBook.available ? 'Yes' : 'No' }}</p>
+                    <img *ngIf="selectedBook.image" [src]="selectedBook.image" alt="{{ selectedBook.title }} cover" class="img-fluid mb-3">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onEdit(selectedBook)">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>

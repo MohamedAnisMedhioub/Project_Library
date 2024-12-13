@@ -1,8 +1,10 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./", // Définit la base pour les chemins absolus
+    "paths": {
+      "src/*": ["src/*"] // Permet d'utiliser des chemins absolus comme 'src/Book'
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -13,7 +15,9 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    "resolveJsonModule": true, // Permet d'importer des fichiers JSON si nécessaire
+    "allowSyntheticDefaultImports": true, // Compatible avec les modules modernes
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022"

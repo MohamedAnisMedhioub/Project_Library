@@ -1,0 +1,25 @@
+.navbar {
+    background-color: gray;
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 1.2rem; 
+    padding: 10px 15px;  
+}
+
+.nav-link:hover {
+    border-radius: 5px;  /* Coins arrondis */
+}
+
+/* Espacement entre l'icône et le texte */
+.nav-link i {
+    margin-right: 10px;
+}

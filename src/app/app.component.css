@@ -1,0 +1,6 @@
+:host {
+    display: block;
+    background-color: #f8f9fa; /* Couleur de fond légère */
+    min-height: 100vh; /* Assurez-vous que la couleur de fond couvre toute la hauteur de la fenêtre */
+    padding: 20px;
+}
